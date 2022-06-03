@@ -29,18 +29,21 @@ test('return titles blogs', async () => {
 })
 
 test('post blogs', async () => {
-  const newBlog ={
+  const newBlog = {
     title: 'lulu',
     author: 'dfgdf',
     url: 'String',
-    likes: 5555
+    likes: 5555,
+    userId:'629a2635427d6e41ffd75533'
   }
   await api
     .post('/api/blogs')
     .send(newBlog)
     .expect(201)
   const blogsAtEnd = await helper.blogsInDb()
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length+1)
+  const titles = blogsAtEnd.map(u => u.title)
+  expect(titles).toContain(newBlog.title)
 })
 
 test('a specific blog can be viewed', async () => {
