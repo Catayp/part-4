@@ -1,10 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIhsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InBlcGl0byIsImlkIjoiNjI5ZTA2YWJhOWVhMDRkZTIxMGIzODBmIiwiaWF0IjoxNjU0NTIzNjAxfQ.lKWTedhxQHlvNSD-8s2jsGKzjVTE9CmcaPDjcY0tUPU
 
 {
-    "title": "gato",
-    "author": "lala",
-    "url": "ñññññ",
-    "likes": 1111,
-    "userId":"629a2635427d6e41ffd75533"
+    "title": "kakiohd",
+    "author": "parom",
+    "url": "dfighidru",
+    "likes": 123
+   
 }                                
