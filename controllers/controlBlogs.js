@@ -5,7 +5,7 @@ const User = require('../models/modelUsers')
 
 blogRouter.get('/', async (request, response) => {
   const blog = await Blog
-    .find({}).populate('user')
+    .find({}).sort({ likes:-1 }).populate('user')
   response.json(blog)
 })
 
@@ -29,7 +29,7 @@ blogRouter.post('/', async (request, response) => {
     title: body.title,
     author: body.author,
     url: body.url,
-    likes: body.likes,
+    likes: 0,
     user: user._id
   })
   const savedBlog = await blog.save()
@@ -53,7 +53,14 @@ blogRouter.delete('/:id', async (request, response) => {
 })
 
 blogRouter.put('/:id', async (request, response) => {
-  await Blog.findByIdAndUpdate(request.params.id, { likes: 222 })
+  const body = request.body
+  const blogUpdate = {
+    title: body.title,
+    author: body.author,
+    url: body.url,
+    likes: body.likes
+  }
+  await Blog.findByIdAndUpdate(request.params.id, blogUpdate)
   response.status(207).end()
 })
 
